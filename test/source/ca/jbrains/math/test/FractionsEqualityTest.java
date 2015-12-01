@@ -129,9 +129,11 @@ public class FractionsEqualityTest {
         public static Fraction[] fractions = tenFormsOf(3, 4);
 
         private static Fraction[] tenFormsOf(int numerator, int denominator) {
-            return Arrays.asList(1, 3, 8, 19, -45, -9, 498, -12342, 1928114, -12).stream().map(
-                    (n) -> new Fraction(3 * n, 4 * n)
-            ).collect(Collectors.toList()).toArray(new Fraction[0]);
+            return Arrays.asList(
+                    1, 3, 8, 19, -45, -9, 498, -12342, 1928114, -12)
+                    .stream().map(
+                            (n) -> new Fraction(3 * n, 4 * n)
+                    ).collect(Collectors.toList()).toArray(new Fraction[0]);
         }
 
         @Theory
