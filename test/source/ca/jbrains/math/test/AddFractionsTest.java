@@ -9,7 +9,6 @@ public class AddFractionsTest {
     public void zeroPlusZero() throws Exception {
         Fraction sum = new Fraction(0).plus(new Fraction(0));
 
-        Assert.assertEquals(0, sum.intValue());
         Assert.assertEquals(0, sum.getNumerator());
         Assert.assertEquals(1, sum.getDenominator());
     }
@@ -18,21 +17,24 @@ public class AddFractionsTest {
     public void notZeroPlusZero() throws Exception {
         Fraction sum = new Fraction(7).plus(new Fraction(0));
 
-        Assert.assertEquals(7, sum.intValue());
+        Assert.assertEquals(7, sum.getNumerator());
+        Assert.assertEquals(1, sum.getDenominator());
     }
 
     @Test
     public void zeroPlusNotZero() throws Exception {
         Fraction sum = new Fraction(0).plus(new Fraction(-4));
 
-        Assert.assertEquals(-4, sum.intValue());
+        Assert.assertEquals(-4, sum.getNumerator());
+        Assert.assertEquals(1, sum.getDenominator());
     }
 
     @Test
     public void notZeroPlusNotZero() throws Exception {
         Fraction sum = new Fraction(1).plus(new Fraction(-4));
 
-        Assert.assertEquals(-3, sum.intValue());
+        Assert.assertEquals(-3, sum.getNumerator());
+        Assert.assertEquals(1, sum.getDenominator());
     }
 
     @Test
