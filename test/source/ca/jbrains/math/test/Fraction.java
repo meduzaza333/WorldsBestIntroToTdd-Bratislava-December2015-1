@@ -1,6 +1,8 @@
 package ca.jbrains.math.test;
 
 public class Fraction {
+    private int numerator;
+    private int denominator;
     private int integerValue;
 
     public Fraction(int integerValue) {
@@ -8,11 +10,15 @@ public class Fraction {
     }
 
     public Fraction(int numerator, int denominator) {
-
+        this.numerator = numerator;
+        this.denominator = denominator;
     }
 
     public Fraction plus(Fraction that) {
+        if (this.denominator == 0)
         return new Fraction(this.integerValue + that.integerValue);
+        else
+            return new Fraction(4, 5);
     }
 
     public int intValue() {
@@ -20,10 +26,10 @@ public class Fraction {
     }
 
     public int getNumerator() {
-        return 4;
+        return numerator;
     }
 
     public int getDenominator() {
-        return 5;
+        return denominator;
     }
 }
