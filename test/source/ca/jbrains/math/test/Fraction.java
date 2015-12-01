@@ -37,7 +37,10 @@ public class Fraction {
     public boolean equals(Object other) {
         if (other instanceof Fraction) {
             final Fraction that = (Fraction) other;
-            return this == that || this.getNumerator() == 0 && that.getNumerator() == 0;
+            return this == that
+                    || this.getNumerator() == 0 && that.getNumerator() == 0
+                    || (this.numerator == that.numerator && this.denominator == that.denominator)
+                    || (this.numerator * that.denominator == that.numerator * this.denominator);
         }
         return false;
     }

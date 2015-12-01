@@ -7,6 +7,9 @@ import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class FractionsEqualityTest {
     @RunWith(Theories.class)
     public static class AllDifferentValues {
@@ -115,8 +118,29 @@ public class FractionsEqualityTest {
         public void allZeroesAreEqual(Fraction oneForm, Fraction theOtherForm) throws Exception {
             Assume.assumeTrue(oneForm.getNumerator() == 0);
             Assume.assumeTrue(theOtherForm.getNumerator() == 0);
-            
+
             Assert.assertEquals(oneForm, theOtherForm);
+        }
+    }
+
+    @RunWith(Theories.class)
+    public static class DifferentFormsOfTheSameValue {
+        @DataPoints
+        public static Fraction[] fractions = tenFormsOf(3, 4);
+
+        private static Fraction[] tenFormsOf(int numerator, int denominator) {
+            return Arrays.asList(1, 3, 8, 19, -45, -9, 498, 12342, 1928114, 12).stream().map(
+                    (n) -> new Fraction(3 * n, 4 * n)
+            ).collect(Collectors.toList()).toArray(new Fraction[0]);
+        }
+
+        @Theory
+        public void theyAreAllEqual(Fraction one, Fraction theOther) throws Exception {
+            Assume.assumeTrue(
+                    one.getNumerator() * theOther.getDenominator()
+                            == theOther.getNumerator() * one.getDenominator());
+            
+            Assert.assertEquals(one, theOther);
         }
     }
 }
