@@ -9,8 +9,15 @@ public class Fraction {
     }
 
     public Fraction(int numerator, int denominator) {
+        if (denominator == 0)
+            throw new IllegalArgumentException("Zero denominator");
+
         this.numerator = numerator;
         this.denominator = denominator;
+    }
+
+    private static int gcd(int numerator, int denominator) {
+        return 0;
     }
 
     public Fraction plus(Fraction that) {
