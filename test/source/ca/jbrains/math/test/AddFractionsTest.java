@@ -32,4 +32,12 @@ public class AddFractionsTest {
 
         Assert.assertEquals(-3, sum.intValue());
     }
+
+    @Test
+    public void sameDenominatorWithoutReducing() throws Exception {
+        Fraction sum = new Fraction(1, 5).plus(new Fraction(3, 5));
+
+        Assert.assertEquals(4, sum.getNumerator());
+        Assert.assertEquals(5, sum.getDenominator());
+    }
 }
