@@ -14,10 +14,7 @@ public class Fraction {
     }
 
     public Fraction plus(Fraction that) {
-        final boolean addingIntegers = this.denominator == 0;
-        if (addingIntegers)
-            return new Fraction(this.numerator + that.numerator, 1);
-        else if (this.denominator == that.denominator)
+        if (this.denominator == that.denominator)
             return new Fraction(
                     this.numerator + that.numerator,
                     this.denominator);
