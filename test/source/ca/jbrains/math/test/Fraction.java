@@ -32,4 +32,9 @@ public class Fraction {
     public int getDenominator() {
         return denominator;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%d/%d", numerator, denominator);
+    }
 }
