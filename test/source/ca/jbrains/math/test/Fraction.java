@@ -23,7 +23,10 @@ public class Fraction {
                     this.numerator + that.numerator,
                     this.denominator);
         else
-            return new Fraction(37, 56);
+            return new Fraction(
+                    this.getNumerator() * that.getDenominator()
+                            + that.getNumerator() * this.getDenominator(),
+                    this.getDenominator() * that.getDenominator());
     }
 
     public int intValue() {

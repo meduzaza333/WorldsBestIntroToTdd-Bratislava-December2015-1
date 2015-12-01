@@ -48,4 +48,12 @@ public class AddFractionsTest {
         Assert.assertEquals(37, sum.getNumerator());
         Assert.assertEquals(56, sum.getDenominator());
     }
+
+    @Test
+    public void moreDifferentDenominatorsWithoutReducing() throws Exception {
+        Fraction sum = new Fraction(-4, 5).plus(new Fraction(6, 11));
+
+        Assert.assertEquals(-14, sum.getNumerator());
+        Assert.assertEquals(55, sum.getDenominator());
+    }
 }
