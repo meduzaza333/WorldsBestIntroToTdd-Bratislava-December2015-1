@@ -10,6 +10,8 @@ public class AddFractionsTest {
         Fraction sum = new Fraction(0).plus(new Fraction(0));
 
         Assert.assertEquals(0, sum.intValue());
+        Assert.assertEquals(0, sum.getNumerator());
+        Assert.assertEquals(1, sum.getDenominator());
     }
 
     @Test
