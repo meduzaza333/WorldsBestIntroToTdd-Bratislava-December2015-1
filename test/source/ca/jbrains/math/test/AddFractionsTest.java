@@ -2,6 +2,11 @@ package ca.jbrains.math.test;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 public class AddFractionsTest {
     @Test
@@ -58,5 +63,12 @@ public class AddFractionsTest {
         Assert.assertEquals(
                 new Fraction(7, 1),
                 new Fraction(5, 1).plus(new Fraction(2, 1)));
+    }
+
+    @Test
+    public void negative() throws Exception {
+        Assert.assertEquals(
+                new Fraction(-9, 20),
+                new Fraction(-1, 5).plus(new Fraction(-1, 4)));
     }
 }
