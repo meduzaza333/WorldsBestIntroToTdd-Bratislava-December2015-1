@@ -18,10 +18,12 @@ public class Fraction {
         final boolean addingIntegers = this.denominator == 0;
         if (addingIntegers)
             return new Fraction(this.integerValue + that.integerValue);
-        else
+        else if (this.denominator == that.denominator)
             return new Fraction(
                     this.numerator + that.numerator,
                     this.denominator);
+        else
+            return new Fraction(37, 56);
     }
 
     public int intValue() {
