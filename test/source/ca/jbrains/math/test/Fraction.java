@@ -15,10 +15,13 @@ public class Fraction {
     }
 
     public Fraction plus(Fraction that) {
-        if (this.denominator == 0)
-        return new Fraction(this.integerValue + that.integerValue);
+        final boolean addingIntegers = this.denominator == 0;
+        if (addingIntegers)
+            return new Fraction(this.integerValue + that.integerValue);
         else
-            return new Fraction(4, 5);
+            return new Fraction(
+                    this.numerator + that.numerator,
+                    this.denominator);
     }
 
     public int intValue() {
