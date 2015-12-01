@@ -56,4 +56,12 @@ public class AddFractionsTest {
         Assert.assertEquals(-14, sum.getNumerator());
         Assert.assertEquals(55, sum.getDenominator());
     }
+
+    @Test
+    public void denominatorsOfOne() throws Exception {
+        Fraction sum = new Fraction(5, 1).plus(new Fraction(2, 1));
+
+        Assert.assertEquals(7, sum.getNumerator());
+        Assert.assertEquals(1, sum.getDenominator());
+    }
 }
