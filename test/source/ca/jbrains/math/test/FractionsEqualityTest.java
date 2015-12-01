@@ -97,4 +97,26 @@ public class FractionsEqualityTest {
             Assert.assertNotEquals(a, c);
         }
     }
+
+    @RunWith(Theories.class)
+    public static class TheVariousFormsOfZero {
+        @DataPoints
+        public static Fraction[] zeroes = {
+                new Fraction(0),
+                new Fraction(0, 1),
+                new Fraction(0, 1123),
+                new Fraction(0, 9387),
+                new Fraction(0, 3),
+                new Fraction(0, -87346),
+                new Fraction(0, -38292),
+        };
+
+        @Theory
+        public void allZeroesAreEqual(Fraction oneForm, Fraction theOtherForm) throws Exception {
+            Assume.assumeTrue(oneForm.getNumerator() == 0);
+            Assume.assumeTrue(theOtherForm.getNumerator() == 0);
+            
+            Assert.assertEquals(oneForm, theOtherForm);
+        }
+    }
 }

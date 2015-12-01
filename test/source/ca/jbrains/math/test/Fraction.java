@@ -34,6 +34,15 @@ public class Fraction {
     }
 
     @Override
+    public boolean equals(Object other) {
+        if (other instanceof Fraction) {
+            final Fraction that = (Fraction) other;
+            return this == that || this.getNumerator() == 0 && that.getNumerator() == 0;
+        }
+        return false;
+    }
+
+    @Override
     public String toString() {
         return String.format("%d/%d", numerator, denominator);
     }
