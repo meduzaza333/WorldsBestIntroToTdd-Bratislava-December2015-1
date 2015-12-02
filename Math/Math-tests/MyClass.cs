@@ -18,16 +18,18 @@ namespace MathTests
 				return this;
 			}
 
-			public int IntValue
-			{
+			public int IntValue {
 				get;
 			}
 		}
 
 		[Test]
-		public void ZeroPlusZero ()
+		public void AddIntegerValues(
+			[Values(0, 7)] int sum, 
+			[Values(0, 7)] int addend, 
+			[Values(0, 0)] int augend)
 		{
-			Assert.AreEqual (0, new Fraction (0).Plus (new Fraction (0)).IntValue);
+			Assert.AreEqual (sum, new Fraction (addend).Plus (new Fraction (augend)).IntValue);
 		}
 	}
 }
