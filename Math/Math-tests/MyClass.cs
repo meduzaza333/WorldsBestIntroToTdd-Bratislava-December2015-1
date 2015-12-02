@@ -15,7 +15,7 @@ namespace MathTests
 
 			public Fraction Plus (Fraction that)
 			{
-				return (that.IntValue == 0) ? this : that;
+				return new Fraction (this.IntValue + that.IntValue);
 			}
 
 			public int IntValue {
@@ -25,9 +25,9 @@ namespace MathTests
 
 		[Test, Sequential]
 		public void AddIntegerValues (
-			[Values (0, 7, 4)] int sum, 
-			[Values (0, 7, 0)] int addend, 
-			[Values (0, 0, 4)] int augend)
+			[Values (0, 7, 4, -9)] int sum, 
+			[Values (0, 7, 0, -12)] int addend, 
+			[Values (0, 0, 4, 3)] int augend)
 		{
 			Assert.AreEqual (sum, new Fraction (addend).Plus (new Fraction (augend)).IntValue);
 		}
