@@ -3,6 +3,7 @@ package ca.jbrains.pos.test;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +13,6 @@ public class SellOneItemTest {
         final Display display = new Display();
         final Sale sale = new Sale(display, new HashMap<String, String>() {{
             put("12345", "EUR 7.95");
-            put("23456", "EUR 12.50");
         }});
 
         sale.onBarcode("12345");
@@ -24,7 +24,6 @@ public class SellOneItemTest {
     public void anotherProductFound() throws Exception {
         final Display display = new Display();
         final Sale sale = new Sale(display, new HashMap<String, String>() {{
-            put("12345", "EUR 7.95");
             put("23456", "EUR 12.50");
         }});
 
@@ -36,10 +35,7 @@ public class SellOneItemTest {
     @Test
     public void productNotFound() throws Exception {
         final Display display = new Display();
-        final Sale sale = new Sale(display, new HashMap<String, String>() {{
-            put("12345", "EUR 7.95");
-            put("23456", "EUR 12.50");
-        }});
+        final Sale sale = new Sale(display, Collections.<String, String>emptyMap());
 
         sale.onBarcode("99999");
 
@@ -49,10 +45,7 @@ public class SellOneItemTest {
     @Test
     public void emptyBarcode() throws Exception {
         final Display display = new Display();
-        final Sale sale = new Sale(display, new HashMap<String, String>() {{
-            put("12345", "EUR 7.95");
-            put("23456", "EUR 12.50");
-        }});
+        final Sale sale = new Sale(display, null);
 
         sale.onBarcode("");
 
@@ -63,21 +56,22 @@ public class SellOneItemTest {
         private Display display;
         private Map<String, String> pricesByBarcode;
 
-        public Sale(Display display, HashMap<String, String> pricesByBarcode) {
+        public Sale(Display display, Map<String, String> pricesByBarcode) {
             this.display = display;
             this.pricesByBarcode = pricesByBarcode;
         }
 
         public void onBarcode(String barcode) {
-            if ("".equals(barcode))
+            if ("".equals(barcode)) {
                 display.setText("Scanning error: empty barcode");
-            else {
-                final String price = pricesByBarcode.get(barcode);
-                if (price == null) {
-                    display.setText(String.format("Product not found for %s", barcode));
-                } else {
-                    display.setText(price);
-                }
+                return;
+            }
+
+            final String price = pricesByBarcode.get(barcode);
+            if (price == null) {
+                display.setText(String.format("Product not found for %s", barcode));
+            } else {
+                display.setText(price);
             }
         }
     }
