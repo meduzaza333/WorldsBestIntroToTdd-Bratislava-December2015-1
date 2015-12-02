@@ -6,8 +6,8 @@ import org.junit.Test;
 public class SellOneItemTest {
     @Test
     public void productFound() throws Exception {
-        final Sale sale = new Sale();
         final Display display = new Display();
+        final Sale sale = new Sale(display);
 
         sale.onBarcode("12345");
 
@@ -15,12 +15,25 @@ public class SellOneItemTest {
     }
 
     public static class Sale {
+        private Display display;
+
+        public Sale(Display display) {
+            this.display = display;
+        }
+
         public void onBarcode(String barcode) {
+            display.setText("EUR 7.95");
         }
     }
     public static class Display {
+        private String text;
+
         public String getText() {
-            return "EUR 7.95";
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
         }
     }
 }
